@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommandRestController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Adventure Game Exam</a> &gt; <a href="index.source.html" class="el_package">com.drpicox.game.command</a> &gt; <span class="el_source">CommandRestController.java</span></div><h1>CommandRestController.java</h1><pre class="source lang-java linenums">package com.drpicox.game.command;
+
+import com.drpicox.game.command.runners.*;
+import com.drpicox.game.players.Player;
+import com.drpicox.game.players.PlayerController;
+import com.drpicox.game.rooms.Room;
+import com.drpicox.game.rooms.RoomController;
+import com.drpicox.game.world.DefaultWorldFactory;
+import com.drpicox.game.world.WorldRestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping(&quot;/api/v1/commands&quot;)
+public class CommandRestController {
+
+    private PlayerController playerController;
+    private RoomController roomController;
+    private WorldRestController worldRestController;
+    private DefaultCommandRunner defaultCommandRunner;
+
+<span class="fc" id="L28">    public CommandRestController(PlayerController playerController, RoomController roomController, WorldRestController worldRestController, DefaultCommandRunner defaultCommandRunner) {</span>
+<span class="fc" id="L29">        this.playerController = playerController;</span>
+<span class="fc" id="L30">        this.roomController = roomController;</span>
+<span class="fc" id="L31">        this.worldRestController = worldRestController;</span>
+<span class="fc" id="L32">        this.defaultCommandRunner = defaultCommandRunner;</span>
+<span class="fc" id="L33">    }</span>
+
+    @PostMapping()
+    public CommandResponse run(@RequestBody CommandRequest request) {
+<span class="fc" id="L37">        var player = getPlayer(request);</span>
+
+<span class="fc" id="L39">        return defaultCommandRunner.run(player, request);</span>
+    }
+
+    private Room getInitialRoom() {
+<span class="fc" id="L43">        var initialRoom = roomController.getInitialRoom();</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (initialRoom == null) {</span>
+<span class="nc" id="L45">            var world = new DefaultWorldFactory().create();</span>
+<span class="nc" id="L46">            worldRestController.replace(world);</span>
+<span class="nc" id="L47">            initialRoom = roomController.getInitialRoom();</span>
+        }
+<span class="fc" id="L49">        return initialRoom;</span>
+    }
+
+    private Player getPlayer(CommandRequest request) {
+<span class="fc" id="L53">        var username = request.getUsername();</span>
+<span class="fc" id="L54">        Player player = playerController.getPlayer(username);</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (player == null) {</span>
+<span class="fc" id="L56">            var initialRoom = getInitialRoom();</span>
+
+<span class="fc" id="L58">            player = playerController.createPlayer(username, initialRoom);</span>
+        }
+<span class="fc" id="L60">        return player;</span>
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({ IllegalCommandException.class })
+    public Map handleException(IllegalCommandException e) {
+<span class="fc" id="L67">        return new HashMap() {{</span>
+<span class="fc" id="L68">            put(&quot;code&quot;, e.getCode());</span>
+<span class="fc" id="L69">            put(&quot;message&quot;, e.getMessage());</span>
+<span class="fc" id="L70">        }};</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

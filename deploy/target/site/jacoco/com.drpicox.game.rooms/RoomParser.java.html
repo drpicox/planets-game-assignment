@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RoomParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Adventure Game Exam</a> &gt; <a href="index.source.html" class="el_package">com.drpicox.game.rooms</a> &gt; <span class="el_source">RoomParser.java</span></div><h1>RoomParser.java</h1><pre class="source lang-java linenums">package com.drpicox.game.rooms;
+
+import com.drpicox.game.items.Item;
+import com.drpicox.game.items.ItemController;
+import com.drpicox.game.monsters.Monster;
+import com.drpicox.game.monsters.MonsterController;
+import com.drpicox.game.utils.Parser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.drpicox.game.rooms.Direction.*;
+
+@Component
+public class RoomParser {
+
+    private RoomRepository roomRepository;
+    private ItemController itemController;
+    private MonsterController monsterController;
+
+<span class="fc" id="L23">    public RoomParser(RoomRepository roomRepository, ItemController itemController, MonsterController monsterController) {</span>
+<span class="fc" id="L24">        this.roomRepository = roomRepository;</span>
+<span class="fc" id="L25">        this.itemController = itemController;</span>
+<span class="fc" id="L26">        this.monsterController = monsterController;</span>
+<span class="fc" id="L27">    }</span>
+
+    public void read(String rooms) {
+<span class="fc" id="L30">        var parser = new Parser(rooms);</span>
+
+<span class="fc" id="L32">        readRoom(parser);</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        while (parser.skipSpaces().hasNext()) {</span>
+<span class="fc" id="L34">            readRoom(parser);</span>
+        }
+<span class="fc" id="L36">    }</span>
+
+    private void readRoom(Parser parser) {
+<span class="fc" id="L39">        var coordinates = readCoordinates(parser);</span>
+<span class="fc" id="L40">        var name = parser.skipChar(':').readUntil(':');</span>
+<span class="fc" id="L41">        var exits = readExits(parser.skipChar(':'));</span>
+<span class="fc" id="L42">        var itemOrMonster = readItemOrMonster(parser.skipChar(':'));</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        var item = itemOrMonster instanceof Item ? (Item) itemOrMonster : null;</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        var monster = itemOrMonster instanceof Monster ? (Monster) itemOrMonster : null;</span>
+<span class="fc" id="L45">        var description = readDescription(parser.skipChar('\n'));</span>
+
+<span class="fc" id="L47">        var room = new Room(coordinates, name, exits, item, monster, description);</span>
+<span class="fc" id="L48">        roomRepository.save(room);</span>
+<span class="fc" id="L49">    }</span>
+
+    private Object readItemOrMonster(Parser parser) {
+<span class="fc" id="L52">        var name = parser.readUntil('\n');</span>
+
+<span class="fc" id="L54">        var monster = monsterController.get(name);</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (monster != null) return monster;</span>
+
+<span class="fc" id="L57">        return itemController.get(name);</span>
+    }
+
+    private RoomCoordinates readCoordinates(Parser parser) {
+<span class="fc" id="L61">        var i = parser.readInt();</span>
+<span class="fc" id="L62">        var j = parser.readInt();</span>
+
+<span class="fc" id="L64">        return new RoomCoordinates(i, j);</span>
+    }
+
+    private List&lt;Exit&gt; readExits(Parser parser) {
+<span class="fc" id="L68">        var result = new ArrayList&lt;Exit&gt;();</span>
+
+<span class="fc" id="L70">        readExit(parser, NORTH, result);</span>
+<span class="fc" id="L71">        readExit(parser, SOUTH, result);</span>
+<span class="fc" id="L72">        readExit(parser, EAST, result);</span>
+<span class="fc" id="L73">        readExit(parser, WEST, result);</span>
+
+<span class="fc" id="L75">        return result;</span>
+    }
+
+    private void readExit(Parser parser, Direction direction, ArrayList&lt;Exit&gt; result) {
+<span class="fc" id="L79">        var code = parser.readInt();</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        if (code == -1) return;</span>
+
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        result.add(new Exit(direction, code, code == 0));</span>
+<span class="fc" id="L83">    }</span>
+
+    private String readDescription(Parser parser) {
+<span class="fc" id="L86">        var description = new StringBuilder();</span>
+<span class="fc" id="L87">        var line = parser.readLine();</span>
+<span class="fc bfc" id="L88" title="All 4 branches covered.">        while (parser.hasNext() &amp;&amp; !line.equals(&quot;::::&quot;)) {</span>
+<span class="fc" id="L89">            description.append('\n').append(line);</span>
+<span class="fc" id="L90">            line = parser.readLine();</span>
+        }
+
+<span class="fc" id="L93">        return description.toString().substring(1);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

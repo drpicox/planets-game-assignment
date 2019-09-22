@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RoomController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Adventure Game Exam</a> &gt; <a href="index.source.html" class="el_package">com.drpicox.game.rooms</a> &gt; <span class="el_source">RoomController.java</span></div><h1>RoomController.java</h1><pre class="source lang-java linenums">package com.drpicox.game.rooms;
+
+import com.drpicox.game.items.Item;
+import com.drpicox.game.utils.TimerTaskRunner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+
+@Controller
+public class RoomController {
+
+    private static final int REFRESH_MILLISECONDS = 30000;
+
+    private RoomParser roomParser;
+    private RoomRepository roomRepository;
+    private TimerTaskRunner timerTaskRunner;
+<span class="fc" id="L22">    private Set&lt;Room&gt; scheduledRefreshes = ConcurrentHashMap.newKeySet();</span>
+
+<span class="fc" id="L24">    public RoomController(RoomParser roomParser, RoomRepository roomRepository, TimerTaskRunner timerTaskRunner) {</span>
+<span class="fc" id="L25">        this.roomParser = roomParser;</span>
+<span class="fc" id="L26">        this.roomRepository = roomRepository;</span>
+<span class="fc" id="L27">        this.timerTaskRunner = timerTaskRunner;</span>
+<span class="fc" id="L28">    }</span>
+
+    public List&lt;AdjacentRoom&gt; getAdjacentRooms(Room origin) {
+<span class="nc" id="L31">        return origin.getOpenedDirections()</span>
+<span class="nc" id="L32">                .stream()</span>
+<span class="nc" id="L33">                .map(direction -&gt; {</span>
+<span class="nc" id="L34">                    var destination = getDestinationRoom(origin, direction);</span>
+<span class="nc" id="L35">                    var adjacentRoom = new AdjacentRoom(origin, direction, destination);</span>
+<span class="nc" id="L36">                    return adjacentRoom;</span>
+<span class="nc" id="L37">                }).collect(Collectors.toList());</span>
+    }
+
+    public List&lt;AdjacentRoomItem&lt;Item&gt;&gt; getAdjacentRoomsItems(Room origin) {
+<span class="nc" id="L41">        return getAdjacentRooms(origin)</span>
+<span class="nc" id="L42">                .stream()</span>
+<span class="nc" id="L43">                .map(adjacentRoom -&gt; new AdjacentRoomItem&lt;Item&gt;(</span>
+                        adjacentRoom,
+<span class="nc" id="L45">                        adjacentRoom.getRoom().getItem()))</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">                .filter(adjacentRoomItem -&gt; adjacentRoomItem.getItem() != null)</span>
+<span class="nc" id="L47">                .collect(Collectors.toList());</span>
+    }
+
+    public &lt;ITEM extends Item&gt; List&lt;AdjacentRoomItem&lt;ITEM&gt;&gt; getAdjacentRoomsItemsOf(Room origin, Class&lt;ITEM&gt; type) {
+<span class="nc" id="L51">        return getAdjacentRoomsItems(origin)</span>
+<span class="nc" id="L52">                .stream()</span>
+<span class="nc" id="L53">                .filter(adjacentRoomItem -&gt; type.isInstance(adjacentRoomItem.getItem()))</span>
+<span class="nc" id="L54">                .map(itemAdjacentRoomItem -&gt; (AdjacentRoomItem&lt;ITEM&gt;) itemAdjacentRoomItem)</span>
+<span class="nc" id="L55">                .collect(Collectors.toList());</span>
+    }
+
+    public List&lt;AdjacentRoomMonster&gt; getAdjacentRoomsMonsters(Room origin) {
+<span class="nc" id="L59">        return getAdjacentRooms(origin)</span>
+<span class="nc" id="L60">                .stream()</span>
+<span class="nc" id="L61">                .map(adjacentRoom -&gt; new AdjacentRoomMonster(</span>
+                        adjacentRoom,
+<span class="nc" id="L63">                        adjacentRoom.getRoom().getMonster()))</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">                .filter(adjacentRoomMonster -&gt; adjacentRoomMonster.getMonster() != null)</span>
+<span class="nc" id="L65">                .collect(Collectors.toList());</span>
+    }
+
+    public Room getDestinationRoom(Room room, Direction direction) {
+<span class="fc" id="L69">        var target = room.getCoordinates().move(direction);</span>
+<span class="fc" id="L70">        return roomRepository.findById(target).orElse(null);</span>
+    }
+
+    public Room getInitialRoom() {
+<span class="fc" id="L74">        var origin = new RoomCoordinates(0, 0);</span>
+<span class="fc" id="L75">        var room = roomRepository.findById(origin).orElse(null);</span>
+<span class="fc" id="L76">        return room;</span>
+    }
+
+    public void killMonster(Room room) {
+<span class="fc" id="L80">        scheduleRoomRefresh(room);</span>
+<span class="fc" id="L81">        room.killMonster();</span>
+<span class="fc" id="L82">        roomRepository.save(room);</span>
+<span class="fc" id="L83">    }</span>
+
+    public void open(Room room, Direction direction) {
+<span class="fc" id="L86">        scheduleRoomRefresh(room);</span>
+<span class="fc" id="L87">        room.open(direction);</span>
+<span class="fc" id="L88">        roomRepository.save(room);</span>
+<span class="fc" id="L89">    }</span>
+
+    public void receiveItem(Room room, Item item) {
+<span class="nc" id="L92">        scheduleRoomRefresh(room);</span>
+<span class="nc" id="L93">        room.receiveItem(item);</span>
+<span class="nc" id="L94">        roomRepository.save(room);</span>
+<span class="nc" id="L95">    }</span>
+
+    public void removeItem(Room room, Item item) {
+<span class="fc" id="L98">        scheduleRoomRefresh(room);</span>
+<span class="fc" id="L99">        room.removeItem(item);</span>
+<span class="fc" id="L100">        roomRepository.save(room);</span>
+<span class="fc" id="L101">    }</span>
+
+    public void scheduleRoomRefresh(Room room) {
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        if (scheduledRefreshes.add(room)) {</span>
+<span class="fc" id="L105">            timerTaskRunner.run(() -&gt; refreshRoom(room), REFRESH_MILLISECONDS);</span>
+        }
+<span class="fc" id="L107">    }</span>
+
+    public void refreshRoom(Room room) {
+<span class="fc" id="L110">        scheduledRefreshes.remove(room);</span>
+<span class="fc" id="L111">        room.refresh();</span>
+<span class="fc" id="L112">        roomRepository.save(room);</span>
+<span class="fc" id="L113">    }</span>
+
+    public void read(String rooms) {
+<span class="fc" id="L116">        roomParser.read(rooms);</span>
+<span class="fc" id="L117">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

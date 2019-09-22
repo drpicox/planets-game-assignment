@@ -1,0 +1,17 @@
+{
+  "playerId": "sisko",
+  "map": { "rows":8, "columns":8 },
+  "entities": [
+    { "id": "Bajor", "type": "star", "row": 3, "column": 3, "size": 9, "playerId": "sisko", "population": 1000 },
+    { "id": "Cardassia", "type": "star", "row": 3, "column": 4, "size": 9 },
+    { "id": "Rio Grande", "type": "ship", "row": 3, "column": 3, "playerId": "sisko", "population": 10 },
+    { "id": "Ganges", "type": "ship", "row": 3, "column": 3, "playerId": "sisko", "population": 12 },
+    { "id": "Defiant", "type": "ship", "row": 2, "column": 3, "playerId": "sisko", "population": 15 },
+    { "id": "Kraxon", "type": "ship", "row": 4, "column": 3, "playerId": "dukat", "population": 15 }
+  ],
+  "commands": [
+    { "id": "Bajor", "type": "BuildShip", "value": true },
+    { "id": "Rio Grande", "type": "load", "value": 2 },
+    { "id": "Rio Grande", "type": "move", "value": "up" }
+  ]
+}

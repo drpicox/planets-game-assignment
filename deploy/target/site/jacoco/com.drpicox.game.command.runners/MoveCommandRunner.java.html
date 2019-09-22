@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MoveCommandRunner.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Adventure Game Exam</a> &gt; <a href="index.source.html" class="el_package">com.drpicox.game.command.runners</a> &gt; <span class="el_source">MoveCommandRunner.java</span></div><h1>MoveCommandRunner.java</h1><pre class="source lang-java linenums">package com.drpicox.game.command.runners;
+
+import com.drpicox.game.command.CommandRequest;
+import com.drpicox.game.command.CommandResponse;
+import com.drpicox.game.command.IllegalCommandException;
+import com.drpicox.game.players.Player;
+import com.drpicox.game.players.PlayerController;
+import com.drpicox.game.rooms.Direction;
+import com.drpicox.game.rooms.Exit;
+import com.drpicox.game.rooms.Room;
+import com.drpicox.game.rooms.RoomController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+<span class="fc" id="L16">public class MoveCommandRunner implements CommandRunner {</span>
+
+    @Autowired RoomController roomController;
+    @Autowired PlayerController playerController;
+    @Autowired LookCommandRunner lookCommandRunner;
+
+    private Direction getDirection(CommandRequest request) {
+<span class="fc" id="L23">        var directionName = request.getArgument(0);</span>
+<span class="fc" id="L24">        var direction = Direction.valueOf(directionName.toUpperCase());</span>
+<span class="fc" id="L25">        return direction;</span>
+    }
+
+    @Override
+    public CommandResponse run(Player player, CommandRequest request) {
+<span class="fc" id="L30">        var direction = getDirection(request);</span>
+<span class="fc" id="L31">        var room = player.getRoom();</span>
+<span class="fc" id="L32">        var exit = room.getExit(direction);</span>
+
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (exit == null)</span>
+<span class="fc" id="L35">            throw new IllegalCommandException(&quot;no-exit&quot;, &quot;Exit &quot; + direction.name() + &quot; does not exists.&quot;);</span>
+
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (!exit.isOpen()) {</span>
+<span class="fc" id="L38">            openExit(player, room, exit);</span>
+        }
+<span class="fc" id="L40">        move(player, direction, room);</span>
+
+<span class="fc" id="L42">        return lookCommandRunner.run(player, request);</span>
+    }
+
+    private void openExit(Player player, Room room, Exit exit) {
+<span class="fc" id="L46">        var code = exit.getCode();</span>
+<span class="fc" id="L47">        var key = player.getKey();</span>
+
+<span class="fc bfc" id="L49" title="All 4 branches covered.">        if (key == null || !key.opens(code))</span>
+<span class="fc" id="L50">            throw new IllegalCommandException(&quot;exit-closed&quot;, &quot;Exit &quot; + exit.getDirection().name() + &quot; is closed and requires a key.&quot;);</span>
+
+<span class="fc" id="L52">        roomController.open(room, exit.getDirection());</span>
+<span class="fc" id="L53">        playerController.leaveItem(player, key);</span>
+<span class="fc" id="L54">    }</span>
+
+    private void move(Player player, Direction direction, Room room) {
+<span class="fc" id="L57">        var destinationRoom = roomController.getDestinationRoom(room, direction);</span>
+<span class="fc" id="L58">        playerController.moveTo(player, destinationRoom);</span>
+<span class="fc" id="L59">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

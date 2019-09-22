@@ -1,0 +1,197 @@
+{
+  "newUniverse": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/game",
+      "body": {
+        "mapCode": "TwoStars"
+      }
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "message": "success"
+      }
+    }
+  },
+  "yours0": {
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/players/yours",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 4,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 9,
+            "population": 100
+          },
+          {
+            "id": 5,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "value": "Defiant",
+            "entityId": 4,
+            "type": "BuildShip"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "save0": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/players/yours/commands",
+      "body": [
+        {
+          "value": "Defiant",
+          "entityId": 4,
+          "type": "BuildShip"
+        }
+      ]
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 4,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 9,
+            "population": 100
+          },
+          {
+            "id": 5,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "entityId": 4,
+            "type": "BuildShip",
+            "value": "Defiant"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "yours0.1": {
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/players/yours",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 4,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 9,
+            "population": 100
+          },
+          {
+            "id": 5,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "entityId": 4,
+            "type": "BuildShip",
+            "value": "Defiant"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "compile1": {
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/players/yours/compile",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 4,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 9,
+            "population": 100
+          },
+          {
+            "id": 5,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          },
+          {
+            "id": 6,
+            "type": "ship",
+            "name": "Defiant",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours"
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [],
+        "playerId": "yours"
+      }
+    }
+  }
+}

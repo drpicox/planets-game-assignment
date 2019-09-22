@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MonsterParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Adventure Game Exam</a> &gt; <a href="index.source.html" class="el_package">com.drpicox.game.monsters</a> &gt; <span class="el_source">MonsterParser.java</span></div><h1>MonsterParser.java</h1><pre class="source lang-java linenums">package com.drpicox.game.monsters;
+
+import com.drpicox.game.items.Item;
+import com.drpicox.game.items.ItemController;
+import com.drpicox.game.utils.Parser;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MonsterParser {
+
+    private MonsterRepository monsterRepository;
+    private ItemController itemController;
+
+<span class="fc" id="L15">    public MonsterParser(MonsterRepository monsterRepository, ItemController itemController) {</span>
+<span class="fc" id="L16">        this.monsterRepository = monsterRepository;</span>
+<span class="fc" id="L17">        this.itemController = itemController;</span>
+<span class="fc" id="L18">    }</span>
+
+    public void read(String monsters) {
+<span class="fc" id="L21">        var parser = new Parser(monsters);</span>
+
+<span class="fc" id="L23">        var readed = readMonster(parser);</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        while (readed) {</span>
+<span class="fc" id="L25">            readed = readMonster(parser);</span>
+        }
+<span class="fc" id="L27">    }</span>
+
+    private boolean readMonster(Parser parser) {
+<span class="fc" id="L30">        skipComments(parser);</span>
+
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (!parser.skipSpaces().hasNext()) return false;</span>
+
+<span class="fc" id="L34">        String name = parser.readUntil(':');</span>
+<span class="fc" id="L35">        int attack = parser.skipChar(':').readInt();</span>
+<span class="fc" id="L36">        int defense = parser.readInt();</span>
+<span class="fc" id="L37">        var item = parseItem(parser.skipChar(':'));</span>
+
+<span class="fc" id="L39">        var monster = new Monster(name, attack, defense, item);</span>
+
+<span class="fc" id="L41">        monsterRepository.save(monster);</span>
+<span class="fc" id="L42">        return true;</span>
+    }
+
+    private Item parseItem(Parser parser) {
+<span class="fc" id="L46">        String itemName = parser.readLine();</span>
+<span class="fc" id="L47">        return itemController.get(itemName);</span>
+    }
+
+    private void skipComments(Parser parser) {
+<span class="pc bpc" id="L51" title="1 of 4 branches missed.">        while (parser.skipSpaces().hasNext() &amp;&amp; parser.peek() == '#') {</span>
+<span class="nc" id="L52">            parser.readLine();</span>
+        }
+<span class="fc" id="L54">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

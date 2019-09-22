@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlayerGameResponse.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Planets Game</a> &gt; <a href="index.source.html" class="el_package">com.drpicox.game.game</a> &gt; <span class="el_source">PlayerGameResponse.java</span></div><h1>PlayerGameResponse.java</h1><pre class="source lang-java linenums">package com.drpicox.game.game;
+
+import com.drpicox.game.players.Player;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+public class PlayerGameResponse {
+
+<span class="fc" id="L13">    private Map&lt;String, Object&gt; json = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L14">    private Map&lt;String, Object&gt; entities = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L15">    private List&lt;Object&gt; commands = new LinkedList&lt;&gt;();</span>
+
+<span class="fc" id="L17">    public PlayerGameResponse(Player player) {</span>
+<span class="fc" id="L18">        json.put(&quot;playerId&quot;, player.getId());</span>
+<span class="fc" id="L19">        json.put(&quot;map&quot;, new HashMap&lt;&gt;() {{</span>
+<span class="fc" id="L20">            put(&quot;rows&quot;, 8);</span>
+<span class="fc" id="L21">            put(&quot;columns&quot;, 8);</span>
+<span class="fc" id="L22">        }});</span>
+<span class="fc" id="L23">        json.put(&quot;entities&quot;, entities.values());</span>
+<span class="fc" id="L24">        json.put(&quot;commands&quot;, commands);</span>
+<span class="fc" id="L25">    }</span>
+
+    void addEntity(Map&lt;String, Object&gt; entity) {
+<span class="fc" id="L28">        entities.put(entity.get(&quot;id&quot;).toString(), entity);</span>
+<span class="fc" id="L29">    }</span>
+
+    void addCommand(Map&lt;String, Object&gt; command) {
+<span class="fc" id="L32">        commands.add(command);</span>
+<span class="fc" id="L33">    }</span>
+
+    @JsonValue
+    public Object getJson() {
+<span class="fc" id="L37">        return json;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
