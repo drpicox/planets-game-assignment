@@ -5,6 +5,7 @@ import com.drpicox.game.players.Player;
 import javax.persistence.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @javax.persistence.Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -55,7 +56,7 @@ public class Entity {
         return coordinates;
     }
 
-    void assignPlayer(Player player) {
+    protected void assignPlayer(Player player) {
         this.player = player;
     }
 
@@ -75,5 +76,22 @@ public class Entity {
 
     public void moveEntity(Coordinates coordinates) {
         this.coordinates = coordinates;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Entity entity = (Entity) o;
+        return Objects.equals(id, entity.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

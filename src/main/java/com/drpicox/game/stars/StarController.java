@@ -49,4 +49,9 @@ public class StarController {
         star.reproducePopulation();
         starRepository.save(star);
     }
+
+    public void attack(Star star, Player player, int amount) {
+        star.attack(player, amount);
+        starRepository.save(star);
+    }
 }

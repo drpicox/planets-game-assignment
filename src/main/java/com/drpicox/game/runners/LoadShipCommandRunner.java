@@ -29,12 +29,20 @@ public class LoadShipCommandRunner implements CommandRunner {
         var commands = commandController.listAllByType("LoadShip");
 
         for (var command : commands) {
+            var player = command.getPlayer();
             var ship = (Ship) command.getEntity();
             var amount = Integer.parseInt(command.getValue());
             var coordinates = ship.getCoordinates();
             var star = starController.getStar(coordinates);
 
-            amount = starController.extractPopulation(star, amount);
+            if (player.equals(star.getPlayer())) {
+                amount = starController.extractPopulation(star, amount);
+            } else if (amount < 0){
+                starController.attack(star, player, -amount);
+            } else {
+                amount = 0;
+            }
+
             shipController.loadPopulation(ship, amount);
         }
     }

@@ -2,6 +2,7 @@ package com.drpicox.game.stars;
 
 import com.drpicox.game.entities.Coordinates;
 import com.drpicox.game.entities.Entity;
+import com.drpicox.game.players.Player;
 
 import java.util.Map;
 
@@ -41,5 +42,14 @@ public class Star extends Entity {
 
     public void reproducePopulation() {
         this.population = Math.min(size, population + population / 10);
+    }
+
+    public void attack(Player player, int amount) {
+        population = population - amount;
+        if (population == 0) this.assignPlayer(null);
+        if (population < 0) {
+            this.assignPlayer(player);
+            population = -population;
+        }
     }
 }
