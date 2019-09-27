@@ -8,7 +8,7 @@ Planets Game,com.drpicox.game.blog,BlogController,0,144,0,4,0,32,0,9,0,7
 Planets Game,com.drpicox.game.blog,Post.new LinkedHashMap() {...},0,31,0,2,0,5,0,2,0,1
 Planets Game,com.drpicox.game.blog,Post,0,26,0,0,0,9,0,4,0,4
 Planets Game,com.drpicox.game.runners,BuildShipCommandRunner,0,46,0,2,0,14,0,4,0,3
-Planets Game,com.drpicox.game.runners,LoadShipCommandRunner,0,58,0,2,0,16,0,4,0,3
+Planets Game,com.drpicox.game.runners,LoadShipCommandRunner,2,77,1,5,1,20,1,5,0,3
 Planets Game,com.drpicox.game.runners,CommandRunnerCollector,8,32,1,3,1,9,1,4,0,3
 Planets Game,com.drpicox.game.runners,CommandRunnerController,0,18,0,0,0,6,0,3,0,3
 Planets Game,com.drpicox.game.runners,MoveShipCommandRunner,0,45,0,2,0,13,0,4,0,3
@@ -16,8 +16,8 @@ Planets Game,com.drpicox.game.runners,ReproduceCommandRunner,0,34,0,2,0,11,0,4,0
 Planets Game,com.drpicox.game.rest,GlobalRestException,5,4,0,0,2,2,1,1,1,1
 Planets Game,com.drpicox.game.rest,GlobalRestControllerExceptionHandler,0,9,0,0,0,2,0,2,0,2
 Planets Game,com.drpicox.game.rest,GlobalRestControllerExceptionHandler.new HashMap() {...},0,16,0,0,0,3,0,1,0,1
-Planets Game,com.drpicox.game.stars,StarController,0,85,0,2,0,20,0,10,0,9
-Planets Game,com.drpicox.game.stars,Star,0,69,0,0,0,18,0,6,0,6
+Planets Game,com.drpicox.game.stars,StarController,0,95,0,2,0,23,0,11,0,10
+Planets Game,com.drpicox.game.stars,Star,0,93,0,4,0,24,0,9,0,7
 Planets Game,com.drpicox.game.rest.blog,PostListResponse.new LinkedHashMap() {...},0,13,0,0,0,3,0,1,0,1
 Planets Game,com.drpicox.game.rest.blog,BlogRestController,0,22,0,0,0,7,0,3,0,3
 Planets Game,com.drpicox.game.rest.blog,PostListResponse,0,11,0,0,0,4,0,2,0,2
@@ -33,7 +33,7 @@ Planets Game,com.drpicox.game.players,PlayerController,0,26,0,0,0,7,0,3,0,3
 Planets Game,com.drpicox.game.ships,Ship,0,35,0,0,0,10,0,4,0,4
 Planets Game,com.drpicox.game.ships,ShipController,4,38,0,0,1,12,1,4,1,4
 Planets Game,com.drpicox.game.entities,Entity.new LinkedHashMap() {...},0,47,0,2,0,7,0,2,0,1
-Planets Game,com.drpicox.game.entities,Entity,0,60,0,2,0,21,0,13,0,12
+Planets Game,com.drpicox.game.entities,Entity,32,63,6,2,5,22,5,14,2,13
 Planets Game,com.drpicox.game.entities,Coordinates.new LinkedHashMap() {...},0,22,0,0,0,4,0,1,0,1
 Planets Game,com.drpicox.game.entities,EntityController,6,37,0,0,2,11,1,6,1,6
 Planets Game,com.drpicox.game.entities,Coordinates,6,65,0,4,2,12,2,7,2,4

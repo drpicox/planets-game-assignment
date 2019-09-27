@@ -1,0 +1,889 @@
+{
+  "newUniverse": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/game",
+      "body": {
+        "mapCode": "TwoStars"
+      }
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "message": "success"
+      }
+    }
+  },
+  "play1": {
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/players/yours",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 100
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "value": "Defiant",
+            "entityId": 20,
+            "type": "BuildShip"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "yours1": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/players/yours/commands",
+      "body": [
+        {
+          "value": "Defiant",
+          "entityId": 20,
+          "type": "BuildShip"
+        }
+      ]
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 100
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "entityId": 20,
+            "type": "BuildShip",
+            "value": "Defiant"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "garak1": {
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/players/garak",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak",
+            "size": 100,
+            "population": 100
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "value": "Ravinok",
+            "entityId": 21,
+            "type": "BuildShip"
+          }
+        ],
+        "playerId": "garak"
+      }
+    }
+  },
+  "saveGarak1": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/players/garak/commands",
+      "body": [
+        {
+          "value": "Ravinok",
+          "entityId": 21,
+          "type": "BuildShip"
+        }
+      ]
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak",
+            "size": 100,
+            "population": 100
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "entityId": 21,
+            "type": "BuildShip",
+            "value": "Ravinok"
+          }
+        ],
+        "playerId": "garak"
+      }
+    }
+  },
+  "compile1": {
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/players/garak/compile",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 23,
+            "type": "ship",
+            "name": "Ravinok",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak",
+            "population": 0
+          },
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak",
+            "size": 100,
+            "population": 100
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "value": "95",
+            "entityId": 23,
+            "type": "LoadShip"
+          }
+        ],
+        "playerId": "garak"
+      }
+    }
+  },
+  "saveGarak2": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/players/garak/commands",
+      "body": [
+        {
+          "value": "95",
+          "entityId": 23,
+          "type": "LoadShip"
+        }
+      ]
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 23,
+            "type": "ship",
+            "name": "Ravinok",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak",
+            "population": 0
+          },
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak",
+            "size": 100,
+            "population": 100
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "entityId": 23,
+            "type": "LoadShip",
+            "value": "95"
+          }
+        ],
+        "playerId": "garak"
+      }
+    }
+  },
+  "yours2": {
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/players/yours",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 22,
+            "type": "ship",
+            "name": "Defiant",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "population": 0
+          },
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 100
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "value": "60",
+            "entityId": 22,
+            "type": "LoadShip"
+          },
+          {
+            "value": "right",
+            "entityId": 22,
+            "type": "MoveShip"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "saveYours2": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/players/yours/commands",
+      "body": [
+        {
+          "value": "60",
+          "entityId": 22,
+          "type": "LoadShip"
+        },
+        {
+          "value": "right",
+          "entityId": 22,
+          "type": "MoveShip"
+        }
+      ]
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 22,
+            "type": "ship",
+            "name": "Defiant",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "population": 0
+          },
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 100
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "entityId": 22,
+            "type": "LoadShip",
+            "value": "60"
+          },
+          {
+            "entityId": 22,
+            "type": "MoveShip",
+            "value": "right"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "compile2": {
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/players/yours/compile",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 22,
+            "type": "ship",
+            "name": "Defiant",
+            "row": 3,
+            "column": 4,
+            "playerId": "yours",
+            "population": 60
+          },
+          {
+            "id": 23,
+            "type": "ship",
+            "name": "Ravinok",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak"
+          },
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 40
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak",
+            "size": 100,
+            "population": 5
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "value": "-3",
+            "entityId": 22,
+            "type": "LoadShip"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "saveYours3": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/players/yours/commands",
+      "body": [
+        {
+          "value": "-3",
+          "entityId": 22,
+          "type": "LoadShip"
+        }
+      ]
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 22,
+            "type": "ship",
+            "name": "Defiant",
+            "row": 3,
+            "column": 4,
+            "playerId": "yours",
+            "population": 60
+          },
+          {
+            "id": 23,
+            "type": "ship",
+            "name": "Ravinok",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak"
+          },
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 40
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak",
+            "size": 100,
+            "population": 5
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "entityId": 22,
+            "type": "LoadShip",
+            "value": "-3"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "compile3": {
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/players/yours/compile",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 22,
+            "type": "ship",
+            "name": "Defiant",
+            "row": 3,
+            "column": 4,
+            "playerId": "yours",
+            "population": 57
+          },
+          {
+            "id": 23,
+            "type": "ship",
+            "name": "Ravinok",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak"
+          },
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 44
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak",
+            "size": 100,
+            "population": 2
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "value": "-2",
+            "entityId": 22,
+            "type": "LoadShip"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "saveYours4": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/players/yours/commands",
+      "body": [
+        {
+          "value": "-2",
+          "entityId": 22,
+          "type": "LoadShip"
+        }
+      ]
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 22,
+            "type": "ship",
+            "name": "Defiant",
+            "row": 3,
+            "column": 4,
+            "playerId": "yours",
+            "population": 57
+          },
+          {
+            "id": 23,
+            "type": "ship",
+            "name": "Ravinok",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak"
+          },
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 44
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak",
+            "size": 100,
+            "population": 2
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "entityId": 22,
+            "type": "LoadShip",
+            "value": "-2"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "compile4": {
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/players/yours/compile",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 22,
+            "type": "ship",
+            "name": "Defiant",
+            "row": 3,
+            "column": 4,
+            "playerId": "yours",
+            "population": 55
+          },
+          {
+            "id": 23,
+            "type": "ship",
+            "name": "Ravinok",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak"
+          },
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 48
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4,
+            "playerId": null,
+            "size": 100,
+            "population": 0
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "value": "-55",
+            "entityId": 22,
+            "type": "LoadShip"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "saveYours5": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/players/yours/commands",
+      "body": [
+        {
+          "value": "-55",
+          "entityId": 22,
+          "type": "LoadShip"
+        }
+      ]
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 22,
+            "type": "ship",
+            "name": "Defiant",
+            "row": 3,
+            "column": 4,
+            "playerId": "yours",
+            "population": 55
+          },
+          {
+            "id": 23,
+            "type": "ship",
+            "name": "Ravinok",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak"
+          },
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 48
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4,
+            "playerId": null,
+            "size": 100,
+            "population": 0
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "entityId": 22,
+            "type": "LoadShip",
+            "value": "-55"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "compile5": {
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/players/yours/compile",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 22,
+            "type": "ship",
+            "name": "Defiant",
+            "row": 3,
+            "column": 4,
+            "playerId": "yours",
+            "population": 0
+          },
+          {
+            "id": 23,
+            "type": "ship",
+            "name": "Ravinok",
+            "row": 3,
+            "column": 4,
+            "playerId": "garak"
+          },
+          {
+            "id": 20,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 52
+          },
+          {
+            "id": 21,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4,
+            "playerId": "yours",
+            "size": 100,
+            "population": 55
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [],
+        "playerId": "yours"
+      }
+    }
+  }
+}

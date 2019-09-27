@@ -422,7 +422,7 @@
             "name": "Earth",
             "row": 4,
             "column": 3,
-            "playerId": null,
+            "playerId": "yours",
             "size": 100,
             "population": 10
           },
@@ -478,7 +478,7 @@
             "name": "Earth",
             "row": 4,
             "column": 3,
-            "playerId": null,
+            "playerId": "yours",
             "size": 100,
             "population": 10
           },
@@ -534,7 +534,7 @@
             "name": "Earth",
             "row": 4,
             "column": 3,
-            "playerId": null,
+            "playerId": "yours",
             "size": 100,
             "population": 11
           },

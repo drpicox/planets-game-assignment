@@ -2,6 +2,7 @@
 
 import com.drpicox.game.entities.Coordinates;
 import com.drpicox.game.entities.Entity;
+import com.drpicox.game.players.Player;
 
 import java.util.Map;
 
@@ -12,35 +13,44 @@ public class Star extends Entity {
     private int population;
 
     public Star(String name, Coordinates coordinates, int size, int population) {
-<span class="fc" id="L15">        super(name, coordinates, &quot;star&quot;);</span>
-<span class="fc" id="L16">        this.size = size;</span>
-<span class="fc" id="L17">        this.population = population;</span>
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L16">        super(name, coordinates, &quot;star&quot;);</span>
+<span class="fc" id="L17">        this.size = size;</span>
+<span class="fc" id="L18">        this.population = population;</span>
+<span class="fc" id="L19">    }</span>
 
-<span class="fc" id="L20">    Star() {</span>
-<span class="fc" id="L21">    } // JPA constructor</span>
+<span class="fc" id="L21">    Star() {</span>
+<span class="fc" id="L22">    } // JPA constructor</span>
 
     public Map&lt;String, Object&gt; getDistantJson() {
-<span class="fc" id="L24">        var result = super.getVisibleJson();</span>
-<span class="fc" id="L25">        result.remove(&quot;playerId&quot;);</span>
-<span class="fc" id="L26">        return result;</span>
+<span class="fc" id="L25">        var result = super.getVisibleJson();</span>
+<span class="fc" id="L26">        result.remove(&quot;playerId&quot;);</span>
+<span class="fc" id="L27">        return result;</span>
     }
 
     public Map&lt;String, Object&gt; getVisibleJson() {
-<span class="fc" id="L30">        var result = super.getVisibleJson();</span>
-<span class="fc" id="L31">        result.put(&quot;size&quot;, size);</span>
-<span class="fc" id="L32">        result.put(&quot;population&quot;, population);</span>
-<span class="fc" id="L33">        return result;</span>
+<span class="fc" id="L31">        var result = super.getVisibleJson();</span>
+<span class="fc" id="L32">        result.put(&quot;size&quot;, size);</span>
+<span class="fc" id="L33">        result.put(&quot;population&quot;, population);</span>
+<span class="fc" id="L34">        return result;</span>
     }
 
     public int extractPopulation(int amount) {
-<span class="fc" id="L37">        amount = Math.min(amount, population);</span>
-<span class="fc" id="L38">        this.population -= amount;</span>
-<span class="fc" id="L39">        return amount;</span>
+<span class="fc" id="L38">        amount = Math.min(amount, population);</span>
+<span class="fc" id="L39">        this.population -= amount;</span>
+<span class="fc" id="L40">        return amount;</span>
     }
 
     public void reproducePopulation() {
-<span class="fc" id="L43">        this.population = Math.min(size, population + population / 10);</span>
-<span class="fc" id="L44">    }</span>
+<span class="fc" id="L44">        this.population = Math.min(size, population + population / 10);</span>
+<span class="fc" id="L45">    }</span>
+
+    public void attack(Player player, int amount) {
+<span class="fc" id="L48">        population = population - amount;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (population == 0) this.assignPlayer(null);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (population &lt; 0) {</span>
+<span class="fc" id="L51">            this.assignPlayer(player);</span>
+<span class="fc" id="L52">            population = -population;</span>
+        }
+<span class="fc" id="L54">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

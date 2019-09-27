@@ -34,6 +34,7 @@
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/matchers/cellEntities/Click_the_Back_button.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/matchers/game/Click_the_Save_game_button.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/matchers/login/Click_the_Log_in_button.java
+/Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/ExterminateTest.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/BlogTest.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/matchers/game/Click_the_Compile_game_button.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/matchers/entity/It_has_no_population.java

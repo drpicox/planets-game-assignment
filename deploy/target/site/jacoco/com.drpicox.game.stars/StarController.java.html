@@ -49,5 +49,10 @@ public class StarController {
 <span class="fc" id="L49">        star.reproducePopulation();</span>
 <span class="fc" id="L50">        starRepository.save(star);</span>
 <span class="fc" id="L51">    }</span>
+
+    public void attack(Star star, Player player, int amount) {
+<span class="fc" id="L54">        star.attack(player, amount);</span>
+<span class="fc" id="L55">        starRepository.save(star);</span>
+<span class="fc" id="L56">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

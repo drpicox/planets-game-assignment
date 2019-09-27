@@ -5,6 +5,7 @@ import com.drpicox.game.players.Player;
 import javax.persistence.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @javax.persistence.Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -22,59 +23,76 @@ public class Entity {
     private Player player;
 
     public Entity(String name, Coordinates coordinates, String type) {
-<span class="fc" id="L25">        this(null, name, coordinates, type);</span>
-<span class="fc" id="L26">    }</span>
+<span class="fc" id="L26">        this(null, name, coordinates, type);</span>
+<span class="fc" id="L27">    }</span>
 
-<span class="fc" id="L28">    public Entity(Player player, String name, Coordinates coordinates, String type) {</span>
-<span class="fc" id="L29">        this.player = player;</span>
-<span class="fc" id="L30">        this.name = name;</span>
-<span class="fc" id="L31">        this.coordinates = coordinates;</span>
-<span class="fc" id="L32">        this.type = type;</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L29">    public Entity(Player player, String name, Coordinates coordinates, String type) {</span>
+<span class="fc" id="L30">        this.player = player;</span>
+<span class="fc" id="L31">        this.name = name;</span>
+<span class="fc" id="L32">        this.coordinates = coordinates;</span>
+<span class="fc" id="L33">        this.type = type;</span>
+<span class="fc" id="L34">    }</span>
 
-<span class="fc" id="L35">    public Entity() {</span>
-<span class="fc" id="L36">    } // JPA constructor</span>
+<span class="fc" id="L36">    public Entity() {</span>
+<span class="fc" id="L37">    } // JPA constructor</span>
 
     public String getName() {
-<span class="fc" id="L39">        return name;</span>
+<span class="fc" id="L40">        return name;</span>
     }
 
     public Long getId() {
-<span class="fc" id="L43">        return id;</span>
+<span class="fc" id="L44">        return id;</span>
     }
 
     public String getType() {
-<span class="fc" id="L47">        return type;</span>
+<span class="fc" id="L48">        return type;</span>
     }
 
     public boolean hasPlayer() {
-<span class="fc bfc" id="L51" title="All 2 branches covered.">        return player != null;</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        return player != null;</span>
     }
 
     public Coordinates getCoordinates() {
-<span class="fc" id="L55">        return coordinates;</span>
+<span class="fc" id="L56">        return coordinates;</span>
     }
 
-    void assignPlayer(Player player) {
-<span class="fc" id="L59">        this.player = player;</span>
-<span class="fc" id="L60">    }</span>
+    protected void assignPlayer(Player player) {
+<span class="fc" id="L60">        this.player = player;</span>
+<span class="fc" id="L61">    }</span>
 
     public Map&lt;String, Object&gt; getVisibleJson() {
-<span class="fc" id="L63">        return new LinkedHashMap&lt;&gt;() {{</span>
-<span class="fc" id="L64">            put(&quot;id&quot;, getId());</span>
-<span class="fc" id="L65">            put(&quot;type&quot;, getType());</span>
-<span class="fc" id="L66">            put(&quot;name&quot;, getName());</span>
-<span class="fc" id="L67">            putAll(getCoordinates().getJson());</span>
-<span class="fc bfc" id="L68" title="All 2 branches covered.">            put(&quot;playerId&quot;, player == null ? null : player.getId());</span>
-<span class="fc" id="L69">        }};</span>
+<span class="fc" id="L64">        return new LinkedHashMap&lt;&gt;() {{</span>
+<span class="fc" id="L65">            put(&quot;id&quot;, getId());</span>
+<span class="fc" id="L66">            put(&quot;type&quot;, getType());</span>
+<span class="fc" id="L67">            put(&quot;name&quot;, getName());</span>
+<span class="fc" id="L68">            putAll(getCoordinates().getJson());</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">            put(&quot;playerId&quot;, player == null ? null : player.getId());</span>
+<span class="fc" id="L70">        }};</span>
     }
 
     public Map&lt;String, Object&gt; getOwnJson() {
-<span class="fc" id="L73">        return this.getVisibleJson();</span>
+<span class="fc" id="L74">        return this.getVisibleJson();</span>
     }
 
     public void moveEntity(Coordinates coordinates) {
-<span class="fc" id="L77">        this.coordinates = coordinates;</span>
-<span class="fc" id="L78">    }</span>
+<span class="fc" id="L78">        this.coordinates = coordinates;</span>
+<span class="fc" id="L79">    }</span>
+
+    public Player getPlayer() {
+<span class="fc" id="L82">        return player;</span>
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L88" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L89">        Entity entity = (Entity) o;</span>
+<span class="nc" id="L90">        return Objects.equals(id, entity.id);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L95">        return Objects.hash(id);</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
