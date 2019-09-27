@@ -10,12 +10,15 @@
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/rest/game/MapCodeNotFoundException.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/rest/blog/BlogRestController.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/stars/StarController.java
+/Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/runners/MoveShipCommandRunner.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/entities/EntityController.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/players/Player.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/commands/CommandRepository.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/runners/CommandRunner.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/rest/blog/PostListResponse.java
+/Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/runners/ReproduceCommandRunner.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/rest/GlobalRestException.java
+/Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/maps/ThreeStarsMap.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/players/PlayerController.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/rest/game/GameRestController.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/runners/BuildShipCommandRunner.java
@@ -29,6 +32,7 @@
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/entities/EntityRepository.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/stars/StarRepository.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/runners/CommandRunnerCollector.java
+/Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/runners/LoadShipCommandRunner.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/players/PlayerRepository.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/ships/Ship.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/main/java/com/drpicox/game/entities/Coordinates.java

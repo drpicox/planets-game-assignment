@@ -32,5 +32,15 @@ public class Star extends Entity {
 <span class="fc" id="L32">        result.put(&quot;population&quot;, population);</span>
 <span class="fc" id="L33">        return result;</span>
     }
+
+    public int extractPopulation(int amount) {
+<span class="fc" id="L37">        amount = Math.min(amount, population);</span>
+<span class="fc" id="L38">        this.population -= amount;</span>
+<span class="fc" id="L39">        return amount;</span>
+    }
+
+    public void reproducePopulation() {
+<span class="fc" id="L43">        this.population = Math.min(size, population + population / 10);</span>
+<span class="fc" id="L44">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

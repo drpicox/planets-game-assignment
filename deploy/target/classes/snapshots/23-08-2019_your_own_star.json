@@ -25,7 +25,7 @@
       "body": {
         "entities": [
           {
-            "id": 11,
+            "id": 17,
             "type": "star",
             "name": "Bajor",
             "row": 3,
@@ -35,7 +35,7 @@
             "population": 100
           },
           {
-            "id": 12,
+            "id": 18,
             "type": "star",
             "name": "Cardassia",
             "row": 3,
@@ -62,14 +62,14 @@
       "body": {
         "entities": [
           {
-            "id": 11,
+            "id": 17,
             "type": "star",
             "name": "Bajor",
             "row": 3,
             "column": 3
           },
           {
-            "id": 12,
+            "id": 18,
             "type": "star",
             "name": "Cardassia",
             "row": 3,

@@ -12,10 +12,10 @@ public class CommandRunnerCollector {
 <span class="fc" id="L12">    public CommandRunnerCollector(List&lt;CommandRunner&gt; runners) {</span>
 <span class="fc" id="L13">        this.runners = new ArrayList&lt;&gt;(runners);</span>
 <span class="fc" id="L14">        this.runners.sort((r1, r2) -&gt; {</span>
-<span class="nc" id="L15">            var p1 = r1.getPriority();</span>
-<span class="nc" id="L16">            var p2 = r2.getPriority();</span>
-<span class="nc bnc" id="L17" title="All 2 branches missed.">            if (p1 &lt; p2) return -1;</span>
-<span class="nc bnc" id="L18" title="All 2 branches missed.">            if (p1 &gt; p2) return 1;</span>
+<span class="fc" id="L15">            var p1 = r1.getPriority();</span>
+<span class="fc" id="L16">            var p2 = r2.getPriority();</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">            if (p1 &lt; p2) return -1;</span>
+<span class="pc bpc" id="L18" title="1 of 2 branches missed.">            if (p1 &gt; p2) return 1;</span>
 <span class="nc" id="L19">            return r1.getClass().getName().compareTo(r2.getClass().getName());</span>
         });
 <span class="fc" id="L21">    }</span>

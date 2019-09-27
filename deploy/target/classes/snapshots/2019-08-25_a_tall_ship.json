@@ -1,0 +1,198 @@
+{
+  "newUniverse": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/game",
+      "body": {
+        "mapCode": "TwoStars"
+      }
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "message": "success"
+      }
+    }
+  },
+  "loginGame": {
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/players/yours",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 5,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 100
+          },
+          {
+            "id": 6,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "value": "Defiant",
+            "entityId": 5,
+            "type": "BuildShip"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "save": {
+    "request": {
+      "method": "PUT",
+      "url": "/api/v1/players/yours/commands",
+      "body": [
+        {
+          "value": "Defiant",
+          "entityId": 5,
+          "type": "BuildShip"
+        }
+      ]
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 5,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 100
+          },
+          {
+            "id": 6,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "entityId": 5,
+            "type": "BuildShip",
+            "value": "Defiant"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "recoverSaved": {
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/players/yours",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 5,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 100
+          },
+          {
+            "id": 6,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [
+          {
+            "entityId": 5,
+            "type": "BuildShip",
+            "value": "Defiant"
+          }
+        ],
+        "playerId": "yours"
+      }
+    }
+  },
+  "compile": {
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/players/yours/compile",
+      "body": null
+    },
+    "response": {
+      "status": 200,
+      "body": {
+        "entities": [
+          {
+            "id": 5,
+            "type": "star",
+            "name": "Bajor",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "size": 100,
+            "population": 100
+          },
+          {
+            "id": 6,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          },
+          {
+            "id": 7,
+            "type": "ship",
+            "name": "Defiant",
+            "row": 3,
+            "column": 3,
+            "playerId": "yours",
+            "population": 0
+          }
+        ],
+        "map": {
+          "columns": 8,
+          "rows": 8
+        },
+        "commands": [],
+        "playerId": "yours"
+      }
+    }
+  }
+}

@@ -35,5 +35,14 @@ public class Coordinates implements Serializable {
 <span class="fc" id="L35">            put(&quot;column&quot;, column);</span>
 <span class="fc" id="L36">        }};</span>
     }
+
+    public Coordinates move(String direction) {
+<span class="fc bfc" id="L40" title="All 4 branches covered.">        switch (direction) {</span>
+<span class="fc" id="L41">            case &quot;down&quot;: return new Coordinates(row + 1, column);</span>
+<span class="fc" id="L42">            case &quot;up&quot;: return new Coordinates(row - 1, column);</span>
+<span class="fc" id="L43">            case &quot;left&quot;: return new Coordinates(row, column - 1);</span>
+<span class="fc" id="L44">            /*case &quot;right&quot;:*/ default: return new Coordinates(row, column + 1);</span>
+        }
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

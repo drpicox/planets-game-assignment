@@ -4,15 +4,29 @@ import com.drpicox.game.entities.Coordinates;
 import com.drpicox.game.entities.Entity;
 import com.drpicox.game.players.Player;
 
+import java.util.Map;
+
 @javax.persistence.Entity
 public class Ship extends Entity {
 
+<span class="fc" id="L12">    private int population = 0;</span>
+
     Ship(Player player, String name, Coordinates coordinates) {
-<span class="fc" id="L11">        super(player, name, coordinates, &quot;ship&quot;);</span>
-<span class="fc" id="L12">    }</span>
+<span class="fc" id="L15">        super(player, name, coordinates, &quot;ship&quot;);</span>
+<span class="fc" id="L16">    }</span>
 
-<span class="fc" id="L14">    Ship() {</span>
-<span class="fc" id="L15">    } // JPA constructor</span>
+<span class="fc" id="L18">    Ship() {</span>
+<span class="fc" id="L19">    } // JPA constructor</span>
 
+    public void loadPopulation(int amount) {
+<span class="fc" id="L22">        this.population += amount;</span>
+<span class="fc" id="L23">    }</span>
+
+    @Override
+    public Map&lt;String, Object&gt; getOwnJson() {
+<span class="fc" id="L27">        var result = super.getOwnJson();</span>
+<span class="fc" id="L28">        result.put(&quot;population&quot;, population);</span>
+<span class="fc" id="L29">        return result;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

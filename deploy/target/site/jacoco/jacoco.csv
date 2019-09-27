@@ -7,14 +7,17 @@ Planets Game,com.drpicox.game.game,GameController,0,95,0,0,0,20,0,8,0,8
 Planets Game,com.drpicox.game.blog,BlogController,0,144,0,4,0,32,0,9,0,7
 Planets Game,com.drpicox.game.blog,Post.new LinkedHashMap() {...},0,31,0,2,0,5,0,2,0,1
 Planets Game,com.drpicox.game.blog,Post,0,26,0,0,0,9,0,4,0,4
-Planets Game,com.drpicox.game.runners,BuildShipCommandRunner,2,44,0,2,1,13,1,3,1,2
-Planets Game,com.drpicox.game.runners,CommandRunnerCollector,24,16,4,0,5,5,3,2,1,2
+Planets Game,com.drpicox.game.runners,BuildShipCommandRunner,0,46,0,2,0,14,0,4,0,3
+Planets Game,com.drpicox.game.runners,LoadShipCommandRunner,0,58,0,2,0,16,0,4,0,3
+Planets Game,com.drpicox.game.runners,CommandRunnerCollector,8,32,1,3,1,9,1,4,0,3
 Planets Game,com.drpicox.game.runners,CommandRunnerController,0,18,0,0,0,6,0,3,0,3
+Planets Game,com.drpicox.game.runners,MoveShipCommandRunner,0,45,0,2,0,13,0,4,0,3
+Planets Game,com.drpicox.game.runners,ReproduceCommandRunner,0,34,0,2,0,11,0,4,0,3
 Planets Game,com.drpicox.game.rest,GlobalRestException,5,4,0,0,2,2,1,1,1,1
 Planets Game,com.drpicox.game.rest,GlobalRestControllerExceptionHandler,0,9,0,0,0,2,0,2,0,2
 Planets Game,com.drpicox.game.rest,GlobalRestControllerExceptionHandler.new HashMap() {...},0,16,0,0,0,3,0,1,0,1
-Planets Game,com.drpicox.game.stars,StarController,0,49,0,2,0,11,0,6,0,5
-Planets Game,com.drpicox.game.stars,Star,0,43,0,0,0,13,0,4,0,4
+Planets Game,com.drpicox.game.stars,StarController,0,85,0,2,0,20,0,10,0,9
+Planets Game,com.drpicox.game.stars,Star,0,69,0,0,0,18,0,6,0,6
 Planets Game,com.drpicox.game.rest.blog,PostListResponse.new LinkedHashMap() {...},0,13,0,0,0,3,0,1,0,1
 Planets Game,com.drpicox.game.rest.blog,BlogRestController,0,22,0,0,0,7,0,3,0,3
 Planets Game,com.drpicox.game.rest.blog,PostListResponse,0,11,0,0,0,4,0,2,0,2
@@ -24,15 +27,16 @@ Planets Game,com.drpicox.game.commands,CommandController,0,37,0,0,0,11,0,6,0,6
 Planets Game,com.drpicox.game.commands,CommandId,12,3,0,0,5,2,1,1,1,1
 Planets Game,com.drpicox.game.maps,MapBuilderCollector,0,22,0,0,0,4,0,3,0,3
 Planets Game,com.drpicox.game.maps,TwoStarsMap,0,27,0,0,0,7,0,3,0,3
+Planets Game,com.drpicox.game.maps,ThreeStarsMap,0,36,0,0,0,8,0,3,0,3
 Planets Game,com.drpicox.game.players,Player,0,12,0,0,0,6,0,3,0,3
 Planets Game,com.drpicox.game.players,PlayerController,0,26,0,0,0,7,0,3,0,3
-Planets Game,com.drpicox.game.ships,Ship,0,10,0,0,0,4,0,2,0,2
-Planets Game,com.drpicox.game.ships,ShipController,4,20,0,0,1,6,1,2,1,2
+Planets Game,com.drpicox.game.ships,Ship,0,35,0,0,0,10,0,4,0,4
+Planets Game,com.drpicox.game.ships,ShipController,4,38,0,0,1,12,1,4,1,4
 Planets Game,com.drpicox.game.entities,Entity.new LinkedHashMap() {...},0,47,0,2,0,7,0,2,0,1
-Planets Game,com.drpicox.game.entities,Entity,0,56,0,2,0,19,0,12,0,11
+Planets Game,com.drpicox.game.entities,Entity,0,60,0,2,0,21,0,13,0,12
 Planets Game,com.drpicox.game.entities,Coordinates.new LinkedHashMap() {...},0,22,0,0,0,4,0,1,0,1
 Planets Game,com.drpicox.game.entities,EntityController,6,37,0,0,2,11,1,6,1,6
-Planets Game,com.drpicox.game.entities,Coordinates,6,17,0,0,2,7,2,3,2,3
+Planets Game,com.drpicox.game.entities,Coordinates,6,65,0,4,2,12,2,7,2,4
 Planets Game,com.drpicox.game.rest.game,GameRestController,0,34,0,2,0,12,0,3,0,2
 Planets Game,com.drpicox.game.rest.game,NewGameForm,0,10,0,0,0,4,0,3,0,3
 Planets Game,com.drpicox.game.rest.game,MapCodeNotFoundException,0,5,0,0,0,2,0,1,0,1

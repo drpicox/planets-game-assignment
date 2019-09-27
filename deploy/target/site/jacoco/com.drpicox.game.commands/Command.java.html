@@ -37,8 +37,8 @@ public class Command {
 <span class="fc" id="L37">        return player;</span>
     }
 
-    public Entity getEntity() {
-<span class="fc" id="L41">        return entity;</span>
+    public&lt;T extends Entity&gt; T getEntity() {
+<span class="fc" id="L41">        return (T) entity;</span>
     }
 
     public String getType() {

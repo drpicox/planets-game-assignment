@@ -19,17 +19,35 @@ public class StarController {
 <span class="fc" id="L19">    }</span>
 
     public void createHomeworld(String name, Coordinates coordinates) {
-<span class="fc" id="L22">        starRepository.save(new Star(name, coordinates, 9, 100));</span>
+<span class="fc" id="L22">        starRepository.save(new Star(name, coordinates, 100, 100));</span>
 <span class="fc" id="L23">    }</span>
+    public void createStar(String name, Coordinates coordinates) {
+<span class="fc" id="L25">        starRepository.save(new Star(name, coordinates, 100, 0));</span>
+<span class="fc" id="L26">    }</span>
 
     public void assignHomeworld(Player player) {
-<span class="fc" id="L26">        var stars = this.listAll();</span>
-<span class="fc bfc" id="L27" title="All 2 branches covered.">        var homeworld = stars.stream().filter(s -&gt; !s.hasPlayer()).findFirst().get();</span>
-<span class="fc" id="L28">        entityController.assignPlayer(homeworld, player);</span>
-<span class="fc" id="L29">    }</span>
+<span class="fc" id="L29">        var stars = this.listAll();</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        var homeworld = stars.stream().filter(s -&gt; !s.hasPlayer()).findFirst().get();</span>
+<span class="fc" id="L31">        entityController.assignPlayer(homeworld, player);</span>
+<span class="fc" id="L32">    }</span>
 
     public List&lt;Star&gt; listAll() {
-<span class="fc" id="L32">        return starRepository.findAll();</span>
+<span class="fc" id="L35">        return starRepository.findAll();</span>
     }
+
+    public Star getStar(Coordinates coordinates) {
+<span class="fc" id="L39">        return starRepository.findByCoordinates(coordinates);</span>
+    }
+
+    public int extractPopulation(Star star, int amount) {
+<span class="fc" id="L43">        var result = star.extractPopulation(amount);</span>
+<span class="fc" id="L44">        starRepository.save(star);</span>
+<span class="fc" id="L45">        return result;</span>
+    }
+
+    public void reproducePopulation(Star star) {
+<span class="fc" id="L49">        star.reproducePopulation();</span>
+<span class="fc" id="L50">        starRepository.save(star);</span>
+<span class="fc" id="L51">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

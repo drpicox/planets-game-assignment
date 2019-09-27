@@ -25,5 +25,15 @@ public class ShipController {
     public List&lt;Ship&gt; listAll() {
 <span class="nc" id="L26">        return shipRepository.findAll();</span>
     }
+
+    public void moveShip(Ship ship, Coordinates coordinates) {
+<span class="fc" id="L30">        ship.moveEntity(coordinates);</span>
+<span class="fc" id="L31">        shipRepository.save(ship);</span>
+<span class="fc" id="L32">    }</span>
+
+    public void loadPopulation(Ship ship, int amount) {
+<span class="fc" id="L35">        ship.loadPopulation(amount);</span>
+<span class="fc" id="L36">        shipRepository.save(ship);</span>
+<span class="fc" id="L37">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -1,7 +1,0 @@
-{
-    "post": {
-        "id": "22-08-2019_first",
-        "title": "My first post",
-        "body": "## Subtitle\nThis is my first **post**\n\n# Let there be the light\nWelcome to the Planets Game.\nToday is a very special day, today we launch the first version of the game.\nIt is not great think, but it has blo at least the minimum necessary to have: \na universe with stars.\n## Create the universe\n<!-- BEGIN TEST -->\n 1. Click _New_ in the main header.\n 1. Write _TwoStars_ as the mapcode.\n 1. Click the _Create_ button.\n<!-- SNAPSHOT -->\n\nYou have created the new game.\nReturn to home and login.\n\n * Click _Home_ in the main header.\n * Write your username.\n * Click the _Log in_ button.\n\nNow you are at the star list page.\n * There is the _Bajor_ star at _3,3_ of _yours_ with _1000_ population.\n * There is the _Cardassia_ star at _3,4_.\n * There is the _Rio Grande_ ship at _3,3_ of _yours_ with _10_ population.\n * There is the _Ganges_ ship at _4,3_ of _yours_ with _12_ population.\n * There is the _Defiant_ ship at _2,3_ of _yours_ with _15_ population.\n * There is the _Kraxon_ ship at _3,3_ of _garak_.\n<!-- END TEST -->\n\nbla bla"
-    }
-}

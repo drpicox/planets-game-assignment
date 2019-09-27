@@ -25,7 +25,14 @@
       "body": {
         "entities": [
           {
-            "id": 7,
+            "id": 11,
+            "type": "star",
+            "name": "Cardassia",
+            "row": 3,
+            "column": 4
+          },
+          {
+            "id": 10,
             "type": "star",
             "name": "Bajor",
             "row": 3,
@@ -33,13 +40,6 @@
             "playerId": "yours",
             "size": 9,
             "population": 100
-          },
-          {
-            "id": 8,
-            "type": "star",
-            "name": "Cardassia",
-            "row": 3,
-            "column": 4
           }
         ],
         "map": {
