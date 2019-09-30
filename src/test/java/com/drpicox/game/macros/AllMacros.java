@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Component
-public class AllMacros {
+public class AllMacros implements RootMacroDecoder {
 
 
     private List<Macro> macros;
@@ -23,14 +23,14 @@ public class AllMacros {
         macros.add(matcherMacro);
     }
 
-    public List<Instruction> decodeInstructions(int firstLineNumber, List<String> instructionsSources) {
+    public List<Instruction> decodeInstructions(String preformat, int firstLineNumber, List<String> instructionsSources) {
         var result = new LinkedList<Instruction>();
 
         var lineNumber = firstLineNumber;
         for (var source: instructionsSources) {
-            var instruction = this.decodeInstruction(lineNumber, source);
-            if (instruction != null) {
-                result.add(instruction);
+            var newInstructions = this.decodeInstruction(preformat + lineNumber, source);
+            if (newInstructions != null) {
+                result.addAll(newInstructions);
             }
             lineNumber += 1;
         }
@@ -38,11 +38,11 @@ public class AllMacros {
         return result;
     }
 
-    private Instruction decodeInstruction(int lineNumber, String source) {
+    private List<Instruction> decodeInstruction(String lineNumber, String source) {
         for (var macro: macros) {
-            var instruction = macro.decodeInstruction(lineNumber, source);
-            if (instruction != null) {
-                return instruction;
+            var newInstructions = macro.decodeInstructions(lineNumber, source, this);
+            if (newInstructions != null) {
+                return newInstructions;
             }
         }
         return null;

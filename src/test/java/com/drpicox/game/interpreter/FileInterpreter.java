@@ -44,7 +44,7 @@ public class FileInterpreter {
         var lineNumber = tokens.getLineNumber();
         var instructionsSources = tokens.acceptUntil("##[^#].*");
 
-        var instructions = this.allMacros.decodeInstructions(lineNumber, instructionsSources);
+        var instructions = this.allMacros.decodeInstructions("", lineNumber, instructionsSources);
         return new InstructionSequence(instructions);
     }
 

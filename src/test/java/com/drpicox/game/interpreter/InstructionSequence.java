@@ -29,9 +29,9 @@ class InstructionSequence {
         return instructions.get(previousIndex).getSource();
     }
 
-    public int getPreviousLine() {
+    public String getPreviousLine() {
         var previousIndex = currentIndex - 1;
-        if (previousIndex < 0) return -1;
+        if (previousIndex < 0) return "-1";
 
         return instructions.get(previousIndex).getLine();
     }

@@ -2,6 +2,8 @@ import chalk from "chalk";
 import Context from "./Context";
 import FileTokenizer from "./FileTokenizer";
 import TestInterpreter from "./TestInterpreter";
+import InstructionSequence from "./InstructionSequence";
+import decodeContent from "../macros/decodeContent";
 
 export default class FileInterpreter {
   _befores = [];
@@ -48,14 +50,12 @@ export default class FileInterpreter {
   _interpretTest(fileTokenizer) {
     const title = fileTokenizer.accept();
     const lineNumber = fileTokenizer.getLineNumber();
-    const instructionsSources = fileTokenizer.acceptUntil(/^##[^#]/);
+    const content = fileTokenizer.acceptUntil(/^##[^#]/).join("\n");
 
     const testContext = this._rootContext.clone();
     const testInterpreter = new TestInterpreter(testContext);
-    const instructionSequence = testInterpreter.createSequence(
-      lineNumber,
-      instructionsSources,
-    );
+    const instructions = decodeContent("", lineNumber, content);
+    const instructionSequence = new InstructionSequence(instructions);
 
     test(title, async () => {
       try {

@@ -6,6 +6,10 @@ export default class InstructionSequence {
     this._currentIndex = 0;
   }
 
+  getInstructions() {
+    return this._instructions;
+  }
+
   hasNext() {
     return this._currentIndex < this._instructions.length;
   }

@@ -10,7 +10,7 @@ const apiMock = {
           if (!ok) return reject({ status, data });
 
           resolve(data);
-        }
+        },
       });
     });
   },
@@ -33,7 +33,7 @@ const apiMock = {
 
   getInteractions() {
     return interactions;
-  }
+  },
 };
 
 export default apiMock;

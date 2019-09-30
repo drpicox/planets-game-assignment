@@ -7,6 +7,8 @@ For now on you will have stars.
 
 ## My star, your star
 
+### Create the universe and login
+
 As usual, create the universe and login.
 
  Click _New_ in the main header.
@@ -17,11 +19,11 @@ As usual, create the universe and login.
  Type your username.
  Click the _Log in_ button.
  <!-- SNAPSHOT loginYours status=200 -->
+ Now you see the _map of the game_.
  
 ### And now comes the magic
 
- Now you see the _map of the game_.
-But something has changed. 
+Something has changed. 
 Like before
  there is a _star_ at coordinates _3,3_ and
  there is a _star_ at coordinates _3,4_.

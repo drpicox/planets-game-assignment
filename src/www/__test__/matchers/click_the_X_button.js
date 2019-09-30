@@ -6,7 +6,7 @@ export default class extends AbstractMatcher {
     super(/click the _([^_]+)_ button/i);
   }
 
-  async interpretMatch([, buttonText], _, { container }) {
+  async interpretMatch([, buttonText], _, { container, debug }) {
     const button = getByText(container, buttonText);
     button.click();
   }

@@ -33,4 +33,31 @@ public class Post {
         }};
     }
 
+    public String getSection(String section) {
+        var result = new StringBuilder();
+
+        var lines = getBody().split("\n");
+        var current = 0;
+        while (current < lines.length && !isSection(lines[current], section)) current += 1;
+        current += 1;
+        while (current < lines.length && !isSection(lines[current])) {
+            result.append(lines[current]).append("\n");
+            current += 1;
+        }
+
+        return result.toString();
+    }
+
+    private boolean isSection(String line, String section) {
+        return isSection(line) &&
+                line.substring(4)
+                        .toLowerCase()
+                        .trim()
+                        .replace(" ", "-")
+                        .equals(section);
+    }
+
+    private boolean isSection(String line) {
+        return line.startsWith("### ");
+    }
 }

@@ -4,9 +4,9 @@ const api = {
       method: "GET",
       headers: {
         "Content-Type": "application/json; charset=utf-8",
-        ...(options && options.headers)
+        ...(options && options.headers),
       },
-      ...options
+      ...options,
     });
 
     const result = await response.json();
@@ -14,7 +14,7 @@ const api = {
     if (!response.ok)
       return Promise.reject({
         status: response.status,
-        data: result
+        data: result,
       });
 
     return result;
@@ -24,7 +24,7 @@ const api = {
     return api.get(url, {
       method: "PUT",
       body: JSON.stringify(body),
-      ...options
+      ...options,
     });
   },
 
@@ -32,13 +32,13 @@ const api = {
     return api.get(url, {
       method: "POST",
       body: JSON.stringify(body),
-      ...options
+      ...options,
     });
   },
 
   async delete(url, options) {
     return api.get(url, { method: "DELETE", ...options });
-  }
+  },
 };
 
 export default api;

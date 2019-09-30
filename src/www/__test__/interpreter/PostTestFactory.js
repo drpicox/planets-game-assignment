@@ -1,24 +1,7 @@
-import path from "path";
-import fs from "fs";
-
-import FileInterpreter from "./FileInterpreter";
 import renderApp from "../renderApp";
-
-function readResource(folder, name) {
-  var fullName = path.join(
-    __dirname,
-    "..",
-    "..",
-    "..",
-    "..",
-    "target",
-    "classes",
-    folder,
-    name,
-  );
-  var content = fs.readFileSync(fullName, { encoding: "utf8" });
-  return content;
-}
+import FileInterpreter from "./FileInterpreter";
+import readResource from "./readResource";
+jest.mock("../../lib/api");
 
 export default class PostTestFactory {
   createTests(postId) {

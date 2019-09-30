@@ -10,6 +10,8 @@ but it has blo at least the minimum necessary to have:
 
 ## Create the universe
 
+### Create the universe
+
 In the beginning there was nothing, which exploded.
 Then you enter to the game, and created a new universe:
 

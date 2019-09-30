@@ -3,7 +3,6 @@ import { configure } from "@testing-library/dom";
 import prettyFormat from "pretty-format";
 import api from "../../lib/api";
 import AbstractRegExpMacro from "./AbstractRegExpMacro";
-jest.mock("../../lib/api");
 
 // one second should be more than enough for any findBy*
 // if you think that you require more time, look this first:

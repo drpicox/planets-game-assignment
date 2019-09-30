@@ -1,3 +1,4 @@
+import LinkMacro from "./LinkMacro";
 import PauseMatcherMacro from "./PauseMatcherMacro";
 import ResumeMatcherMacro from "./ResumeMatcherMacro";
 import MatcherMacro from "./MatcherMacro";
@@ -5,6 +6,7 @@ import TitleMacro from "./TitleMacro";
 import SnapshotMacro from "./SnapshotMacro";
 
 const macros = [
+  LinkMacro,
   TitleMacro,
   PauseMatcherMacro,
   ResumeMatcherMacro,
@@ -13,12 +15,11 @@ const macros = [
 ].map(Macro => new Macro());
 
 export default class AllMacro {
-  filterInstruction(instruction) {
-    return macros.some(m => m.filterInstruction(instruction));
-  }
-
-  async interpretInstruction(instruction, context) {
-    const macro = macros.find(m => m.filterInstruction(instruction));
-    await macro.interpretInstruction(instruction, context);
+  decodeInstructions(instruction, decodeContent) {
+    for (var macro of macros) {
+      var instructions = macro.decodeInstructions(instruction, decodeContent);
+      if (instructions != null) return instructions;
+    }
+    return [];
   }
 }
