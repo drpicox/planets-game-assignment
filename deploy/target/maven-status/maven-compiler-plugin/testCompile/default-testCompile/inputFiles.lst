@@ -3,6 +3,7 @@
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/matchers/newGame/NewGameInstructionMatcher.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/matchers/entity/It_has_no_owner.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/matchers/Now_you_see_the_X.java
+/Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/macros/LinkMacro.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/interpreter/FileInterpreter.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/ExploreNewWorldsTest.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/matchers/entity/It_has_X_typed_into_the_new_ship_game.java
@@ -16,6 +17,7 @@
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/interpreter/Context.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/macros/TitleMacro.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/interpreter/InstructionSequence.java
+/Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/macros/RootMacroDecoder.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/macros/AllMacros.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/matchers/InstructionMatcherMatch.java
 /Volumes/Projects/tecnocampus/LS2/planets-game/src/test/java/com/drpicox/game/interpreter/Instruction.java

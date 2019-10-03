@@ -6,17 +6,8 @@ enemies.
 
 ## Exterminate your adversary
 
-### Two stars map
-
- - Click _New_ in the main header.
- - Type _TwoStars_ into the _map code_.
- - Click the _Create_ button. 
- <!-- SNAPSHOT newUniverse status=200 -->
- - Click _Play_ in the main header.
- - Type your username.
- - Click the _Log in_ button. 
- <!-- SNAPSHOT play1 status=200 -->
- - Now you see the _map of the game_.
+Just before begin
+[create the TwoStars map and login](?root=Blog&postId=2019-08-23_your_own_star#create-the-universe-and-login).
  
 ### Create your ship
 
@@ -40,14 +31,14 @@ enemies.
  You see the _star_ _Cardassia_.
  Type _Ravinok_ into its _new ship name_.
  
-### Wait for the next turn
+### Next turn
 
  Click _Game_ in the main header.
  Click the _Save game_ button.
- <!-- SNAPSHOT saveGarak1 status=200 -->
+ <!-- SNAPSHOT saveTurnTURN status=200 -->
  Click the _Compile game_ button.
  Wait for an alert saying _game saved_.
- <!-- SNAPSHOT compile1 status=200 --> 
+ <!-- SNAPSHOT compileTurnTURN status=200 --> 
  Wait for an alert saying _game compiled_.
  Click _Play_ in the main header.
 
@@ -73,18 +64,9 @@ enemies.
  Type _60_ into its _load_.
  Click its button to _go right_.
  
-### Next turn: 2
+### Turn 2: Unload few troops
  
- Click _Game_ in the main header.
- Click the _Save game_ button.
- <!-- SNAPSHOT saveYours2 status=200 -->
- Click the _Compile game_ button.
- Wait for an alert saying _game saved_.
- <!-- SNAPSHOT compile2 status=200 --> 
- Wait for an alert saying _game compiled_.
- Click _Play_ in the main header.
- 
-### Unload just few troops
+[Save and compile the game](?root=Blog&postId=2019-08-29_exterminate&TURN=2#next-turn).
 
  Click at coordinates _3,4_.
  You see the _star_ _Cardassia_.
@@ -94,18 +76,9 @@ enemies.
  It has a _population_ of _60_.
  Type _-3_ into its _load_.
  
-### Next turn: 3
- 
- Click _Game_ in the main header.
- Click the _Save game_ button.
- <!-- SNAPSHOT saveYours3 status=200 -->
- Click the _Compile game_ button.
- Wait for an alert saying _game saved_.
- <!-- SNAPSHOT compile3 status=200 --> 
- Wait for an alert saying _game compiled_.
- Click _Play_ in the main header. 
- 
-### Unload more
+### Turn 3: Unload more
+
+[Save and compile the game](?root=Blog&postId=2019-08-29_exterminate&TURN=3#next-turn).
 
  Click at coordinates _3,4_.
  You see the _star_ _Cardassia_.
@@ -115,18 +88,9 @@ enemies.
  It has a _population_ of _57_.
  Type _-2_ into its _load_.
 
-### Next turn: 4
- 
- Click _Game_ in the main header.
- Click the _Save game_ button.
- <!-- SNAPSHOT saveYours4 status=200 -->
- Click the _Compile game_ button.
- Wait for an alert saying _game saved_.
- <!-- SNAPSHOT compile4 status=200 --> 
- Wait for an alert saying _game compiled_.
- Click _Play_ in the main header. 
- 
-### Unload more
+### Turn 4: Unload even more
+
+[Save and compile the game](?root=Blog&postId=2019-08-29_exterminate&TURN=4#next-turn).
 
  Click at coordinates _3,4_.
  You see the _star_ _Cardassia_.
@@ -136,18 +100,9 @@ enemies.
  It has a _population_ of _55_.
  Type _-55_ into its _load_.
 
-### Next turn: 5
- 
- Click _Game_ in the main header.
- Click the _Save game_ button.
- <!-- SNAPSHOT saveYours5 status=200 -->
- Click the _Compile game_ button.
- Wait for an alert saying _game saved_.
- <!-- SNAPSHOT compile5 status=200 --> 
- Wait for an alert saying _game compiled_.
- Click _Play_ in the main header. 
+### Turn 5: See what is yours now
 
-### See what is yours now
+[Save and compile the game](?root=Blog&postId=2019-08-29_exterminate&TURN=5#next-turn).
 
  Click at coordinates _3,4_.
  You see the _star_ _Cardassia_.

@@ -33,5 +33,32 @@ public class Post {
 <span class="fc" id="L33">        }};</span>
     }
 
+    public String getSection(String section) {
+<span class="fc" id="L37">        var result = new StringBuilder();</span>
+
+<span class="fc" id="L39">        var lines = getBody().split(&quot;\n&quot;);</span>
+<span class="fc" id="L40">        var current = 0;</span>
+<span class="pc bpc" id="L41" title="1 of 4 branches missed.">        while (current &lt; lines.length &amp;&amp; !isSection(lines[current], section)) current += 1;</span>
+<span class="fc" id="L42">        current += 1;</span>
+<span class="pc bpc" id="L43" title="1 of 4 branches missed.">        while (current &lt; lines.length &amp;&amp; !isSection(lines[current])) {</span>
+<span class="fc" id="L44">            result.append(lines[current]).append(&quot;\n&quot;);</span>
+<span class="fc" id="L45">            current += 1;</span>
+        }
+
+<span class="fc" id="L48">        return result.toString();</span>
+    }
+
+    private boolean isSection(String line, String section) {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        return isSection(line) &amp;&amp;</span>
+<span class="fc" id="L53">                line.substring(4)</span>
+<span class="fc" id="L54">                        .toLowerCase()</span>
+<span class="fc" id="L55">                        .trim()</span>
+<span class="fc" id="L56">                        .replace(&quot; &quot;, &quot;-&quot;)</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">                        .equals(section);</span>
+    }
+
+    private boolean isSection(String line) {
+<span class="fc" id="L61">        return line.startsWith(&quot;### &quot;);</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

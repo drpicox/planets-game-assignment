@@ -14,7 +14,7 @@
       }
     }
   },
-  "play1": {
+  "loginYours": {
     "request": {
       "method": "GET",
       "url": "/api/v1/players/yours",
@@ -149,7 +149,7 @@
       }
     }
   },
-  "saveGarak1": {
+  "saveTurnTURN": {
     "request": {
       "method": "PUT",
       "url": "/api/v1/players/garak/commands",
@@ -198,7 +198,7 @@
       }
     }
   },
-  "compile1": {
+  "compileTurnTURN": {
     "request": {
       "method": "POST",
       "url": "/api/v1/players/garak/compile",
@@ -365,7 +365,7 @@
       }
     }
   },
-  "saveYours2": {
+  "saveTurn2": {
     "request": {
       "method": "PUT",
       "url": "/api/v1/players/yours/commands",
@@ -433,7 +433,7 @@
       }
     }
   },
-  "compile2": {
+  "compileTurn2": {
     "request": {
       "method": "POST",
       "url": "/api/v1/players/yours/compile",
@@ -496,7 +496,7 @@
       }
     }
   },
-  "saveYours3": {
+  "saveTurn3": {
     "request": {
       "method": "PUT",
       "url": "/api/v1/players/yours/commands",
@@ -565,7 +565,7 @@
       }
     }
   },
-  "compile3": {
+  "compileTurn3": {
     "request": {
       "method": "POST",
       "url": "/api/v1/players/yours/compile",
@@ -628,7 +628,7 @@
       }
     }
   },
-  "saveYours4": {
+  "saveTurn4": {
     "request": {
       "method": "PUT",
       "url": "/api/v1/players/yours/commands",
@@ -697,7 +697,7 @@
       }
     }
   },
-  "compile4": {
+  "compileTurn4": {
     "request": {
       "method": "POST",
       "url": "/api/v1/players/yours/compile",
@@ -760,7 +760,7 @@
       }
     }
   },
-  "saveYours5": {
+  "saveTurn5": {
     "request": {
       "method": "PUT",
       "url": "/api/v1/players/yours/commands",
@@ -829,7 +829,7 @@
       }
     }
   },
-  "compile5": {
+  "compileTurn5": {
     "request": {
       "method": "POST",
       "url": "/api/v1/players/yours/compile",
