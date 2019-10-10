@@ -54,7 +54,7 @@ public class BlogController {
             }
         }
 
-        return body.toString();
+        return body.toString().replaceAll("\r", " ");
     }
 
     private File[] getResourceBlogFiles() {
@@ -65,6 +65,6 @@ public class BlogController {
     private String getBlogPath() {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         URL url = loader.getResource("blog");
-        return url.getPath();
+        return url.getPath().replaceAll("%20", " ");
     }
 }

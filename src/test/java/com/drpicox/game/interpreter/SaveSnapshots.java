@@ -35,7 +35,7 @@ public class SaveSnapshots implements Consumer<Context> {
     private File getSnapshotFile(String postId) {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         URL url = loader.getResource("snapshots");
-        String path = url.getPath();
+        String path = url.getPath().replaceAll("%20", " ");
         return new File(path, postId + ".json");
     }
 }
